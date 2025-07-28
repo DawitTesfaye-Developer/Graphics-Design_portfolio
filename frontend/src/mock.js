@@ -4,7 +4,9 @@ export const mockDesigner = {
   name: "Alex Rodriguez",
   title: "Graphic Designer",
   tagline: "Visual storytelling through design",
-  email: "alex@alexdesigns.com",
+  email: "dawit6825@gmail.com",
+  phone: "+251900760914",
+  linkedin: "www.linkedin.com/in/dawit-tesfaye-hatau-60a17b311",
   location: "San Francisco, CA"
 };
 

@@ -64,6 +64,51 @@ body {
   letter-spacing: -0.02em;
 }
 
+/* New Animations */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 4s ease infinite;
+}
+
+/* Selection Animation */
+::selection {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-shadow: none;
+}
+
 /* Premium Button Styles */
 .premium-button {
   background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
@@ -72,6 +117,23 @@ body {
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 14px 0 rgba(31, 41, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.premium-button:hover::before {
+  left: 100%;
 }
 
 .premium-button:hover {
@@ -89,6 +151,23 @@ body {
   font-size: 1.1rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 25px 0 rgba(79, 70, 229, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-button-large::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.premium-button-large:hover::before {
+  left: 100%;
 }
 
 .premium-button-large:hover {
@@ -104,6 +183,23 @@ body {
   color: #374151;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-outline-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.premium-outline-button:hover::before {
+  left: 100%;
 }
 
 .premium-outline-button:hover {
@@ -190,6 +286,23 @@ body {
   letter-spacing: 0.025em;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-filter-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.4s;
+}
+
+.premium-filter-button:hover::before {
+  left: 100%;
 }
 
 /* Modal Enhancements */
@@ -238,6 +351,23 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 15px 35px 0 rgba(240, 147, 251, 0.3);
   border-radius: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-contact-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.premium-contact-button:hover::before {
+  left: 100%;
 }
 
 .premium-contact-button:hover {
@@ -347,10 +477,4 @@ html {
   outline: 2px solid #4f46e5;
   outline-offset: 2px;
   border-radius: 4px;
-}
-
-/* Selection styling */
-::selection {
-  background: rgba(79, 70, 229, 0.2);
-  color: inherit;
 }

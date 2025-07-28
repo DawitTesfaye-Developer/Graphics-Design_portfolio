@@ -1,13 +1,13 @@
 // Mock data for graphic design project showcase
 
 export const mockDesigner = {
-  name: "Alex Rodriguez",
-  title: "Graphic Designer",
+  name: "Dawit Tesfaye",
+  title: "Graphic Designer || Learning Experience Designer || Fullstack Developer",
   tagline: "Visual storytelling through design",
   email: "dawit6825@gmail.com",
   phone: "+251900760914",
   linkedin: "www.linkedin.com/in/dawit-tesfaye-hatau-60a17b311",
-  location: "San Francisco, CA"
+  location: "Addis Ababa, Ethiopia"
 };
 
 export const mockProjects = [

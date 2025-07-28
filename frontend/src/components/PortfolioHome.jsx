@@ -4,8 +4,8 @@ import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
-import { 
-  mockDesigner, 
+import {
+  mockDesigner,
   mockProjects,
   mockCategories
 } from '../mock';
@@ -23,8 +23,8 @@ const PortfolioHome = () => {
     setIsVisible(true);
   }, []);
 
-  const filteredProjects = selectedCategory === 'All' 
-    ? mockProjects 
+  const filteredProjects = selectedCategory === 'All'
+    ? mockProjects
     : mockProjects.filter(project => project.category === selectedCategory);
 
   const featuredProjects = mockProjects.filter(project => project.featured);
@@ -36,7 +36,7 @@ const PortfolioHome = () => {
 
   const nextImage = () => {
     if (selectedProject) {
-      setCurrentImageIndex((prev) => 
+      setCurrentImageIndex((prev) =>
         prev === selectedProject.images.length - 1 ? 0 : prev + 1
       );
     }
@@ -44,7 +44,7 @@ const PortfolioHome = () => {
 
   const prevImage = () => {
     if (selectedProject) {
-      setCurrentImageIndex((prev) => 
+      setCurrentImageIndex((prev) =>
         prev === 0 ? selectedProject.images.length - 1 : prev - 1
       );
     }
@@ -79,8 +79,8 @@ const PortfolioHome = () => {
               </h1>
               <p className="text-sm text-slate-500 font-medium tracking-wide">{mockDesigner.title}</p>
             </div>
-            <Button 
-              size="sm" 
+            <Button
+              size="sm"
               className="premium-button group overflow-hidden relative"
               onClick={() => setContactModalOpen(true)}
             >
@@ -101,27 +101,29 @@ const PortfolioHome = () => {
                 <span className="text-sm font-medium text-slate-700">Available for new projects</span>
               </div>
             </div>
-            
+
+            {/* hero picture */}
+
             <h2 className="hero-title text-6xl lg:text-8xl font-bold mb-8 leading-tight">
               <span className="block text-slate-800">Visual</span>
               <span className="block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
                 storytelling through design
               </span>
             </h2>
-            
+
             <p className="text-xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-              A curated collection of design projects spanning brand identity, digital design, 
+              A curated collection of design projects spanning brand identity, digital design,
               and creative campaigns that tell compelling visual stories across diverse industries.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
               <Button size="lg" className="premium-button-large group">
                 <Eye className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                 View Portfolio
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                variant="outline"
+                size="lg"
                 className="premium-outline-button"
                 onClick={() => setContactModalOpen(true)}
               >
@@ -129,7 +131,7 @@ const PortfolioHome = () => {
                 Get In Touch
               </Button>
             </div>
-            
+
             <div className="flex items-center justify-center space-x-8 text-sm text-slate-500">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
@@ -142,7 +144,7 @@ const PortfolioHome = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Hero Decoration */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/80 to-transparent"></div>
       </section>
@@ -160,11 +162,11 @@ const PortfolioHome = () => {
             </h3>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">Highlighted projects that showcase the breadth of creative solutions and artistic vision</p>
           </div>
-          
+
           <div className="grid lg:grid-cols-3 gap-8">
             {featuredProjects.map((project, index) => (
-              <Card 
-                key={project.id} 
+              <Card
+                key={project.id}
                 className={`premium-card overflow-hidden cursor-pointer group ${project.color} border-0 shadow-xl`}
                 onClick={() => openProjectModal(project)}
                 onMouseEnter={() => setHoveredProject(project.id)}
@@ -172,7 +174,7 @@ const PortfolioHome = () => {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="relative overflow-hidden">
-                  <img 
+                  <img
                     src={project.images[0]}
                     alt={project.title}
                     className="w-full h-80 object-cover group-hover:scale-110 transition-all duration-700 ease-out"
@@ -226,7 +228,7 @@ const PortfolioHome = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h3 className="text-4xl lg:text-5xl font-bold mb-8 text-slate-800">All Creative Work</h3>
-            
+
             {/* Enhanced Filter Buttons */}
             <div className="inline-flex items-center gap-3 p-2 bg-white/80 backdrop-blur-lg rounded-2xl border border-white/30 shadow-lg mb-16">
               <Filter className="w-4 h-4 text-slate-500 ml-3" />
@@ -236,11 +238,10 @@ const PortfolioHome = () => {
                   variant={selectedCategory === category ? "default" : "ghost"}
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
-                  className={`premium-filter-button ${
-                    selectedCategory === category 
-                      ? "bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg" 
+                  className={`premium-filter-button ${selectedCategory === category
+                      ? "bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg"
                       : "text-slate-600 hover:text-slate-800 hover:bg-white/60"
-                  }`}
+                    }`}
                 >
                   {category}
                 </Button>
@@ -251,14 +252,14 @@ const PortfolioHome = () => {
           {/* Enhanced Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProjects.map((project, index) => (
-              <Card 
-                key={project.id} 
+              <Card
+                key={project.id}
                 className="premium-project-card overflow-hidden cursor-pointer group border-0 shadow-lg hover:shadow-2xl"
                 onClick={() => openProjectModal(project)}
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <div className="relative overflow-hidden">
-                  <img 
+                  <img
                     src={project.images[0]}
                     alt={project.title}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-all duration-500 ease-out"
@@ -300,12 +301,12 @@ const PortfolioHome = () => {
             <div className="h-full flex flex-col">
               {/* Enhanced Image Gallery */}
               <div className="relative flex-1 bg-gradient-to-br from-slate-50 to-slate-100">
-                <img 
+                <img
                   src={selectedProject.images[currentImageIndex]}
                   alt={`${selectedProject.title} - ${currentImageIndex + 1}`}
                   className="w-full h-full object-contain transition-all duration-500"
                 />
-                
+
                 {selectedProject.images.length > 1 && (
                   <>
                     <Button
@@ -352,11 +353,11 @@ const PortfolioHome = () => {
                       {selectedProject.category}
                     </Badge>
                   </div>
-                  
+
                   <p className="text-slate-600 mb-8 leading-relaxed text-lg">
                     {selectedProject.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-3">
                     {selectedProject.tags.map((tag, index) => (
                       <Badge key={index} className="premium-tag-large">
@@ -386,8 +387,8 @@ const PortfolioHome = () => {
             <div className="space-y-6">
               {/* Email */}
               <div className="group">
-                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100 hover:border-blue-200 transition-all cursor-pointer" 
-                     onClick={() => copyToClipboard(mockDesigner.email, 'email')}>
+                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100 hover:border-blue-200 transition-all cursor-pointer"
+                  onClick={() => copyToClipboard(mockDesigner.email, 'email')}>
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
                       <Mail className="w-5 h-5 text-white" />
@@ -406,7 +407,7 @@ const PortfolioHome = () => {
               {/* Phone */}
               <div className="group">
                 <div className="flex items-center justify-between p-4 bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl border border-emerald-100 hover:border-emerald-200 transition-all cursor-pointer"
-                     onClick={() => copyToClipboard(mockDesigner.phone, 'phone')}>
+                  onClick={() => copyToClipboard(mockDesigner.phone, 'phone')}>
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center">
                       <Phone className="w-5 h-5 text-white" />
@@ -425,7 +426,7 @@ const PortfolioHome = () => {
               {/* LinkedIn */}
               <div className="group">
                 <div className="flex items-center justify-between p-4 bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl border border-violet-100 hover:border-violet-200 transition-all cursor-pointer"
-                     onClick={() => window.open(`https://${mockDesigner.linkedin}`, '_blank')}>
+                  onClick={() => window.open(`https://${mockDesigner.linkedin}`, '_blank')}>
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-violet-500 rounded-full flex items-center justify-center">
                       <Linkedin className="w-5 h-5 text-white" />
@@ -443,7 +444,7 @@ const PortfolioHome = () => {
             </div>
 
             <div className="mt-8 pt-6 border-t border-slate-200">
-              <Button 
+              <Button
                 className="w-full premium-contact-button"
                 onClick={() => setContactModalOpen(false)}
               >
@@ -470,20 +471,20 @@ const PortfolioHome = () => {
               <Heart className="w-4 h-4 text-pink-400" />
               <span className="text-sm font-medium">Let's create something amazing</span>
             </div>
-            
+
             <h3 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
               Ready to bring your
               <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 vision to life?
               </span>
             </h3>
-            
+
             <p className="text-xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
               Have a project in mind? I'd love to hear about it and explore how we can create something beautiful together that resonates with your audience.
             </p>
-            
-            <Button 
-              size="lg" 
+
+            <Button
+              size="lg"
               className="premium-contact-button group"
               onClick={() => setContactModalOpen(true)}
             >
